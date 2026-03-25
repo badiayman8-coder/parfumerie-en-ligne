@@ -18,7 +18,8 @@ export const siteConfig = {
   pack3TotalDh: 330,
   pack2Title: 'Pack 2 parfums',
   pack3Title: 'Pack 3 parfums',
-  whatsappPhoneE164: '212600000000',
+  /** WhatsApp boutique (format E.164 sans +, pour wa.me). */
+  whatsappPhoneE164: '212655363549',
   instagramHandle: 'votre_compte_insta',
   instagramUrl: 'https://instagram.com/votre_compte_insta',
   amana:
