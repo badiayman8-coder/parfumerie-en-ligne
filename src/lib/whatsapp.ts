@@ -1,4 +1,4 @@
-import { siteConfig } from '../config/site'
+import { getWhatsAppPhoneDigits, siteConfig } from '../config/site'
 import { formatUnitDh } from './catalogPricing'
 import type { Product } from '../types/product'
 import type { CartLine } from './pricing'
@@ -91,7 +91,7 @@ export function whatsappOrderUrl(
   customer: Parameters<typeof buildOrderMessage>[3],
   orderRef: string
 ): string {
-  const phone = normalizeWhatsAppPhoneDigits(siteConfig.whatsappPhoneE164)
+  const phone = normalizeWhatsAppPhoneDigits(getWhatsAppPhoneDigits())
   let text = buildOrderMessage(lines, productList, packOffer, customer, orderRef)
   if (text.length > MAX_PREFILL_CHARS) {
     text =

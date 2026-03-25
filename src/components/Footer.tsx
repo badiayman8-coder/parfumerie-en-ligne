@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { siteConfig } from '../config/site'
+import { getWhatsAppPhoneDigits, siteConfig } from '../config/site'
 import { normalizeWhatsAppPhoneDigits } from '../lib/whatsapp'
 
 export function Footer() {
@@ -19,7 +19,7 @@ export function Footer() {
         <div className="text-sm">
           <p className="font-medium text-neutral-900">Contact</p>
           <a
-            href={`https://api.whatsapp.com/send?phone=${normalizeWhatsAppPhoneDigits(siteConfig.whatsappPhoneE164)}`}
+            href={`https://api.whatsapp.com/send?phone=${normalizeWhatsAppPhoneDigits(getWhatsAppPhoneDigits())}`}
             target="_blank"
             rel="noreferrer"
             className="mt-2 inline-block font-medium text-emerald-800 underline-offset-4 hover:underline"

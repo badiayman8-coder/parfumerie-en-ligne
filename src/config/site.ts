@@ -1,3 +1,25 @@
+/** Numéro WhatsApp boutique (chiffres seuls, format international sans +). */
+const DEFAULT_WHATSAPP_DIGITS = '212655363549'
+
+/** Ancien placeholder du template — ignoré même si présent dans `.env` / Vercel. */
+const INVALID_WHATSAPP_PLACEHOLDERS = new Set(['212600000000', '21260000000'])
+
+/**
+ * Numéro utilisé pour les liens `api.whatsapp.com` / commandes.
+ * Priorité : `VITE_WHATSAPP_PHONE` au build si valide, sinon défaut ci-dessus.
+ * Sur Vercel : supprimez toute variable `VITE_WHATSAPP_PHONE` pointant encore vers 212600…
+ */
+export function getWhatsAppPhoneDigits(): string {
+  const raw = import.meta.env.VITE_WHATSAPP_PHONE
+  if (typeof raw === 'string' && raw.trim()) {
+    const d = raw.replace(/\D/g, '')
+    if (d.length >= 11 && !INVALID_WHATSAPP_PLACEHOLDERS.has(d)) {
+      return d
+    }
+  }
+  return DEFAULT_WHATSAPP_DIGITS
+}
+
 /** Configuration boutique — à adapter (WhatsApp, Instagram, prix). */
 export const siteConfig = {
   shopName: 'Parfumerie 33',
@@ -18,8 +40,6 @@ export const siteConfig = {
   pack3TotalDh: 330,
   pack2Title: 'Pack 2 parfums',
   pack3Title: 'Pack 3 parfums',
-  /** WhatsApp boutique (format E.164 sans +, pour wa.me). */
-  whatsappPhoneE164: '212655363549',
   instagramHandle: 'votre_compte_insta',
   instagramUrl: 'https://instagram.com/votre_compte_insta',
   amana:
