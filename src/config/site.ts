@@ -1,5 +1,5 @@
-/** Numéro WhatsApp boutique (chiffres seuls, format international sans +). */
-const DEFAULT_WHATSAPP_DIGITS = '212655363549'
+/** Numéro WhatsApp boutique — +212 778 956 714 (chiffres seuls, sans +). */
+const DEFAULT_WHATSAPP_DIGITS = '212778956714'
 
 /** Ancien placeholder du template — ignoré même si présent dans `.env` / Vercel. */
 const INVALID_WHATSAPP_PLACEHOLDERS = new Set(['212600000000', '21260000000'])

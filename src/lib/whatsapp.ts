@@ -10,14 +10,14 @@ const MAX_PREFILL_CHARS = 1800
 
 /**
  * Numéro uniquement en chiffres, format international sans + ni 0 initial.
- * Ex. Maroc : +212 655 363 549 → 212655363549 ; 06… → 2126…
+ * Maroc : 06/07… national → 2126…/2127… ; 9 chiffres commençant par 6 ou 7 → préfixe 212.
  */
 export function normalizeWhatsAppPhoneDigits(raw: string): string {
   let d = raw.replace(/\D/g, '')
-  if (d.length === 10 && d.startsWith('0') && d[1] === '6') {
+  if (d.length === 10 && d.startsWith('0') && (d[1] === '6' || d[1] === '7')) {
     d = `212${d.slice(1)}`
   }
-  if (d.length === 9 && d.startsWith('6')) {
+  if (d.length === 9 && (d.startsWith('6') || d.startsWith('7'))) {
     d = `212${d}`
   }
   return d
