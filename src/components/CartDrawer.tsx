@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { siteConfig } from '../config/site'
 import { QuantityStepper } from './QuantityStepper'
 import { useCart } from '../hooks/useCart'
 import { useProducts } from '../hooks/useProducts'
+import { catalogHasMixedUnitPrices, formatUnitDh } from '../lib/catalogPricing'
 import { getPackFlow } from '../lib/packComposer'
 import { cartTotalUnits, computeTotals } from '../lib/pricing'
 
@@ -20,6 +21,10 @@ export function CartDrawer() {
 
   const units = cartTotalUnits(lines)
   const totals = computeTotals(lines, products, packOffer)
+  const showLineUnitPrice = useMemo(
+    () => catalogHasMixedUnitPrices(products) && !totals.packApplied,
+    [products, totals.packApplied]
+  )
   const flow = getPackFlow()
   const packRemaining =
     flow && units < flow.target ? flow.target - units : 0
@@ -45,7 +50,7 @@ export function CartDrawer() {
   if (!drawerOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end">
+    <div className="fixed inset-0 z-50 flex justify-end print:hidden">
       <button
         type="button"
         className="absolute inset-0 bg-black/40"
@@ -105,9 +110,11 @@ export function CartDrawer() {
                       <p className="text-sm font-medium text-neutral-900">
                         {p.brand} {p.name}
                       </p>
-                      <p className="mt-1 text-xs text-neutral-500">
-                        {p.priceDh.toFixed(2)} {siteConfig.currency} / flacon
-                      </p>
+                      {showLineUnitPrice ? (
+                        <p className="mt-1 text-xs text-neutral-500">
+                          {formatUnitDh(p.priceDh)} / flacon
+                        </p>
+                      ) : null}
                       <div className="mt-2 flex items-center gap-3">
                         <QuantityStepper
                           value={line.qty}

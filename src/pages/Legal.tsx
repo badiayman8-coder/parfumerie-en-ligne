@@ -33,14 +33,18 @@ export function Legal() {
           dépendent de votre ville : elles seront confirmées par message après commande.
         </p>
         <p className="mt-2">
-          Le prix unitaire affiché ({cfg.unitPriceDh} {cfg.currency} le flacon){' '}
-          <strong>inclut la livraison</strong> pour une commande hors offre pack. Les{' '}
+          Les flacons <strong>standard</strong> sont proposés à partir de{' '}
+          {cfg.standardUnitPriceDh} {cfg.currency} ; les références{' '}
+          <strong>premium</strong> à {cfg.premiumUnitMinDh} ou {cfg.premiumUnitMaxDh}{' '}
+          {cfg.currency} — dans tous les cas le prix affiché <strong>inclut la livraison</strong>{' '}
+          pour une commande à l&apos;unité. Les{' '}
           <Link to="/packs" className="font-medium underline underline-offset-2">
             packs 2 parfums ({cfg.pack2TotalDh} {cfg.currency}) et 3 parfums (
             {cfg.pack3TotalDh} {cfg.currency})
           </Link>{' '}
-          s&apos;appliquent lorsque le panier contient exactement 2 ou 3 flacons et que
-          vous cochez l&apos;offre correspondante — livraison incluse dans le montant pack.
+          s&apos;appliquent à <strong>tout le catalogue</strong> lorsque le panier contient
+          exactement 2 ou 3 flacons (activation automatique du tarif pack — livraison incluse
+          dans le montant pack).
         </p>
       </section>
 

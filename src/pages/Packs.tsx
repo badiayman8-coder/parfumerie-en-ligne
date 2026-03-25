@@ -10,11 +10,11 @@ export function Packs() {
           Packs & livraison
         </h1>
         <p className="mt-3 text-neutral-600">
-          Le prix du flacon à l&apos;unité <strong>inclut déjà la livraison</strong>. Pour
-          écouler le stock plus vite, nous proposons des{' '}
-          <strong>packs de 2 ou 3 parfums</strong>, composables librement (homme et/ou
-          femme) : au panier, lorsque vous avez exactement 2 ou 3 flacons, vous pouvez
-          appliquer le tarif pack correspondant.
+          Le prix du flacon à l&apos;unité <strong>inclut déjà la livraison</strong> (flacons
+          standard ou premium). Les <strong>packs de 2 ou 3 parfums</strong> sont les mêmes
+          pour toutes les références : dès que votre panier contient exactement 2 ou 3
+          flacons, le <strong>tarif pack s&apos;applique automatiquement</strong> (mix
+          homme/femme, standard ou premium).
         </p>
       </div>
 

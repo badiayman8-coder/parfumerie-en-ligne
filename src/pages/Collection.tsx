@@ -4,6 +4,7 @@ import { ProductCard } from '../components/ProductCard'
 import { productsByGender } from '../data/products'
 import { useCart } from '../hooks/useCart'
 import { useProducts } from '../hooks/useProducts'
+import { catalogHasMixedUnitPrices } from '../lib/catalogPricing'
 import { cartTotalUnits } from '../lib/pricing'
 import { clearPackFlow, getPackFlow, type PackFlowState } from '../lib/packComposer'
 import type { Gender } from '../types/product'
@@ -52,6 +53,8 @@ export function Collection() {
     }
   }, [lines])
 
+  const showUnitPrice = catalogHasMixedUnitPrices(products)
+
   const list = useMemo(() => {
     const base = productsByGender(products, gender)
     const q = query.trim().toLowerCase()
@@ -80,11 +83,11 @@ export function Collection() {
             <strong>{compose.seedLabel}</strong> est déjà dans votre panier (1er parfum).
             Choisissez{' '}
             {compose.target === 2 ? '1 autre' : '2 autres'} parfum(s) ci-dessous, ouvrez
-            la fiche et ajoutez au panier. Ensuite passez à la{' '}
+            la fiche et ajoutez au panier.             Ensuite ouvrez la{' '}
             <Link to="/commande" className="font-bold underline">
               commande
             </Link>{' '}
-            et cochez l&apos;offre pack correspondante.
+            : le tarif pack s&apos;applique tout seul à 2 ou 3 flacons.
           </p>
           <p className="mt-2 text-xs text-emerald-800">
             Panier actuel : {units} flacon{units > 1 ? 's' : ''} — objectif{' '}
@@ -158,7 +161,7 @@ export function Collection() {
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {list.map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <ProductCard key={p.id} product={p} showUnitPrice={showUnitPrice} />
           ))}
         </div>
       )}

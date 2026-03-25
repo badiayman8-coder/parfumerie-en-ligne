@@ -2,7 +2,12 @@
 export const siteConfig = {
   shopName: 'Parfumerie 33',
   shopTagline: 'Décomptes 33 ml · Liquidation de stock',
-  /** Prix d’un flacon : livraison incluse dans ce prix. */
+  /** Flacon « entrée de gamme » / standard — livraison incluse. */
+  standardUnitPriceDh: 130,
+  /** Premium : 140 ou 150 dh selon la référence (voir fiche produit). */
+  premiumUnitMinDh: 140,
+  premiumUnitMaxDh: 150,
+  /** @deprecated utiliser standardUnitPriceDh */
   unitPriceDh: 130,
   /** Supplément livraison hors logique pack (souvent 0 si tout est inclus au flacon). */
   deliveryPerOrderDh: 0,
@@ -20,8 +25,8 @@ export const siteConfig = {
     'Les envois sont préparés pour expédition via le réseau Amana (point relais / livraison selon zone).',
   contactEmail: 'contact@example.com',
   promoBanner:
-    '130 dh le flacon, livraison incluse. Packs 2 ou 3 parfums (mix homme/femme) — paiement en espèces à la livraison.',
+    'Flacons standard à partir de 130 dh, premium 140–150 dh (livraison incluse). Packs 2 ou 3 : mêmes totaux pour tout le catalogue — paiement en espèces à la livraison.',
 } as const
 
 /** Alias pour textes qui parlent encore de « prix par défaut ». */
-export const defaultUnitPriceDh = siteConfig.unitPriceDh
+export const defaultUnitPriceDh = siteConfig.standardUnitPriceDh

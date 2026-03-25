@@ -4,12 +4,17 @@ import { siteConfig } from '../config/site'
 import { QuantityStepper } from '../components/QuantityStepper'
 import { useCart } from '../hooks/useCart'
 import { useProducts } from '../hooks/useProducts'
+import {
+  catalogHasMixedUnitPrices,
+  formatUnitDh,
+  isPremiumUnitPrice,
+} from '../lib/catalogPricing'
 import { flagOpenCartDrawer, startPackFlow } from '../lib/packComposer'
 
 export function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { getProduct } = useProducts()
+  const { getProduct, products } = useProducts()
   const product = id ? getProduct(id) : undefined
   const { add, openCart } = useCart()
   const [qty, setQty] = useState(1)
@@ -19,6 +24,11 @@ export function ProductDetail() {
     if (!product) return ''
     return tab === 'stock' && product.imageStock ? product.imageStock : product.imageOfficial
   }, [product, tab])
+
+  const mixedPrices = useMemo(
+    () => catalogHasMixedUnitPrices(products),
+    [products]
+  )
 
   if (!product) {
     return (
@@ -33,6 +43,7 @@ export function ProductDetail() {
 
   const p = product
   const label = `${p.brand} ${p.name}`
+  const premium = isPremiumUnitPrice(p)
 
   function goPack2() {
     add(p.id, 1)
@@ -100,14 +111,24 @@ export function ProductDetail() {
           {p.volumeMl} ml — même format pour toutes les références (emballage
           uniforme).
         </p>
-        <p className="mt-4 text-2xl font-semibold tabular-nums">
-          {p.priceDh.toFixed(2)} {siteConfig.currency}
+        <p className="mt-4 flex flex-wrap items-baseline gap-2 text-2xl font-semibold tabular-nums">
+          <span>{formatUnitDh(p.priceDh)}</span>
+          {premium ? (
+            <span className="rounded-full bg-neutral-900 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-white">
+              Premium
+            </span>
+          ) : (
+            <span className="text-sm font-medium uppercase tracking-wide text-neutral-500">
+              Standard
+            </span>
+          )}
         </p>
         <p className="mt-2 text-sm text-neutral-600">
-          Prix <strong>livraison incluse</strong> pour un achat à l&apos;unité. Packs 2 ou 3
-          parfums (mix homme/femme) : voir{' '}
+          Prix <strong>livraison incluse</strong> à l&apos;unité. Les offres{' '}
+          <strong>pack 2 / pack 3</strong> valent pour tout le catalogue (standard et
+          premium) — détail sur{' '}
           <Link to="/packs" className="font-medium underline underline-offset-2">
-            la page Packs
+            Packs
           </Link>
           .
         </p>
@@ -127,8 +148,9 @@ export function ProductDetail() {
           <section className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
             <h2 className="text-sm font-semibold text-neutral-900">Achat simple</h2>
             <p className="mt-1 text-xs text-neutral-600">
-              Un ou plusieurs flacons au prix unitaire ({p.priceDh.toFixed(2)}{' '}
-              {siteConfig.currency} / flacon, livraison incluse).
+              {mixedPrices
+                ? 'Un ou plusieurs flacons au tarif de chaque fiche (ci-dessus), livraison incluse.'
+                : `Un ou plusieurs flacons à ${siteConfig.standardUnitPriceDh} ${siteConfig.currency} le flacon (livraison incluse).`}
             </p>
             <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end">
               <div>
@@ -153,9 +175,9 @@ export function ProductDetail() {
           <section className="rounded-2xl border-2 border-emerald-600/40 bg-gradient-to-b from-emerald-50/80 to-white p-5">
             <h2 className="text-sm font-semibold text-emerald-950">Packs (remise)</h2>
             <p className="mt-2 text-sm text-neutral-800">
-              Un clic = le pack est activé : ce parfum est le 1er flacon. Vous choisissez
-              ensuite le(s) autre(s) dans la boutique — tout apparaît dans « Ma commande » en
-              bas de l’écran.
+              Un clic = le pack est activé : ce parfum est le 1er flacon (même tarif pack pour
+              standard ou premium). Vous choisissez ensuite le(s) autre(s) dans la boutique —
+              tout apparaît dans « Ma commande » en bas de l’écran.
             </p>
             <div className="mt-4 flex flex-col gap-3">
               <button

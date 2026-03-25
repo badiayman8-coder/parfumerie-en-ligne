@@ -1,4 +1,5 @@
 import { siteConfig } from '../config/site'
+import { formatUnitDh } from './catalogPricing'
 import type { Product } from '../types/product'
 import type { CartLine } from './pricing'
 import type { PackOfferMode } from './pricing'
@@ -14,7 +15,8 @@ export function buildOrderMessage(
     city: string
     address: string
     notes?: string
-  }
+  },
+  orderRef: string
 ): string {
   const { subtotalDh, deliveryDh, totalDh, packApplied, packLabel } = computeTotals(
     lines,
@@ -26,13 +28,19 @@ export function buildOrderMessage(
     .map((line) => {
       const p = productList.find((x) => x.id === line.productId)
       if (!p) return ''
-      return `• ${p.brand} ${p.name} × ${line.qty} — ${p.priceDh} ${siteConfig.currency}/u`
+      if (packApplied) {
+        return `• ${p.brand} ${p.name} × ${line.qty}`
+      }
+      return `• ${p.brand} ${p.name} × ${line.qty} — ${formatUnitDh(p.priceDh)}/u`
     })
     .filter(Boolean)
     .join('\n')
 
   const parts = [
     `Commande ${siteConfig.shopName}`,
+    '',
+    `N° DE COMMANDE : ${orderRef}`,
+    '(À indiquer au livreur — même numéro sur votre ticket)',
     '',
     'CLIENT',
     `Nom : ${customer.name}`,
@@ -50,6 +58,8 @@ export function buildOrderMessage(
     packApplied ? '' : `Livraison : ${deliveryDh === 0 ? 'incluse au prix du flacon' : `${deliveryDh} ${siteConfig.currency}`}`,
     `TOTAL à payer en espèces à la livraison : ${totalDh} ${siteConfig.currency}`,
     '',
+    'LIVREUR — vérifier le N° de commande et le montant avant remise du colis.',
+    '',
     'Paiement uniquement en espèces à la livraison.',
   ]
 
@@ -60,10 +70,11 @@ export function whatsappOrderUrl(
   lines: CartLine[],
   productList: Product[],
   packOffer: PackOfferMode,
-  customer: Parameters<typeof buildOrderMessage>[3]
+  customer: Parameters<typeof buildOrderMessage>[3],
+  orderRef: string
 ): string {
   const phone = siteConfig.whatsappPhoneE164.replace(/\D/g, '')
-  const text = buildOrderMessage(lines, productList, packOffer, customer)
+  const text = buildOrderMessage(lines, productList, packOffer, customer, orderRef)
   const q = encodeURIComponent(text)
   return `https://wa.me/${phone}?text=${q}`
 }

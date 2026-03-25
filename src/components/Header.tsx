@@ -16,7 +16,7 @@ export function Header() {
   const count = cartTotalUnits(lines)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur print:hidden">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <button
           type="button"

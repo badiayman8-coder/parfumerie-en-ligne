@@ -7,8 +7,8 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Perfume_212_Carolina_Herrera.jpg/960px-Perfume_212_Carolina_Herrera.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel : flacon 212 Carolina Herrera (Wikimedia Commons). Votre déclinaison 33 ml peut différer."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel 212 (Commons). Votre 33 ml peut différer."
   },
   {
     "id": "twilly-hermes",
@@ -18,8 +18,8 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/960px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif (photo produit grand public). Flacon Twilly Hermès : remplacer l’URL via Admin si besoin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel type produit sur fond clair (Commons). Photo Twilly officielle : via Admin."
   },
   {
     "id": "alien-mugler",
@@ -28,31 +28,31 @@
     "gender": "femme",
     "priceDh": 130,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Armani_perfume_1.7oz.JPG/960px-Armani_perfume_1.7oz.JPG",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif femme (Commons). Alien Mugler : ajuster la photo via Admin pour le flacon violet."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/A_bottle_of_BOSS_ALIVE_Perfume_that_smells_sweet_and_of_jasmine_sambac.jpg/960px-A_bottle_of_BOSS_ALIVE_Perfume_that_smells_sweet_and_of_jasmine_sambac.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel flacon féminin type studio (Commons). Alien Mugler : photo exacte via Admin."
   },
   {
     "id": "hermes-voyage",
     "brand": "Hermès",
     "name": "33 ml",
     "gender": "unisex",
-    "priceDh": 130,
+    "priceDh": 140,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Eau_Sauvage_Christian_Dior.jpg/960px-Eau_Sauvage_Christian_Dior.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Doublon possible avec Twilly — même maison. Visuel : flacon Dior (Commons), à remplacer par Hermès si vous avez la photo."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel flacon sur fond clair (Commons). Hermès : remplacer par votre photo."
   },
   {
     "id": "tom-ford",
     "brand": "Tom Ford",
     "name": "33 ml",
     "gender": "unisex",
-    "priceDh": 130,
+    "priceDh": 150,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Boss_Bottled.jpg/960px-Boss_Bottled.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif (Commons). Tom Ford : importer la vraie photo marque via Admin."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lancome_Tresor.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel luxe type (Commons). Tom Ford : photo marque via Admin."
   },
   {
     "id": "ysl-y-elle",
@@ -61,20 +61,20 @@
     "gender": "femme",
     "priceDh": 130,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/960px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif. Y Elle : remplacer par photo officielle YSL via Admin."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Armani_perfume_1.7oz.JPG/960px-Armani_perfume_1.7oz.JPG",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel féminin (Commons). Y Elle : photo YSL via Admin."
   },
   {
     "id": "chanel-chance-coco",
     "brand": "Chanel Chance / Coco",
     "name": "33 ml",
     "gender": "femme",
-    "priceDh": 130,
+    "priceDh": 150,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lancome_Tresor.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Précisez la variante souhaitée en commande. Visuel indicatif Lancôme (Commons) — remplacer par Chanel si disponible."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Précisez la variante en commande. Visuel type (Commons) — Chanel via Admin."
   },
   {
     "id": "lancome-idole",
@@ -84,8 +84,8 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lancome_Tresor.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel : Lancôme Trésor (Commons). Idôle : mettre la photo Idôle via Admin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel Lancôme (Commons). Idôle : photo Idôle via Admin."
   },
   {
     "id": "armani-si",
@@ -95,8 +95,8 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Armani_perfume_1.7oz.JPG/960px-Armani_perfume_1.7oz.JPG",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel : flacon Armani femme (Commons). Sì : confirmer visuel via Admin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel Armani femme (Commons)."
   },
   {
     "id": "diesel-loverdose",
@@ -105,9 +105,20 @@
     "gender": "femme",
     "priceDh": 130,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Perfume_212_Carolina_Herrera.jpg/960px-Perfume_212_Carolina_Herrera.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif. Loverdose : photo cœur Diesel à ajouter via Admin."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/A_bottle_of_BOSS_ALIVE_Perfume_that_smells_sweet_and_of_jasmine_sambac.jpg/960px-A_bottle_of_BOSS_ALIVE_Perfume_that_smells_sweet_and_of_jasmine_sambac.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Loverdose femme — visuel type parfum féminin (Commons). Photo Diesel cœur : via Admin."
+  },
+  {
+    "id": "diesel-homme",
+    "brand": "Diesel",
+    "name": "Pour homme · 33 ml",
+    "gender": "homme",
+    "priceDh": 130,
+    "volumeMl": 33,
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/3/31/CK_One.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel générique flacon masculin sobre (CK One, Wikimedia Commons). Remplacer par votre photo Diesel homme via Admin."
   },
   {
     "id": "narciso-for-her",
@@ -117,8 +128,8 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/960px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif. Narciso for Her : flacon cubique blanc — remplacer via Admin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel type (Commons). Narciso : flacon cubique via Admin."
   },
   {
     "id": "jpg-le-male",
@@ -128,19 +139,19 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Jean-Paul_Gaultier_Ultra_Male.jpg/960px-Jean-Paul_Gaultier_Ultra_Male.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel : ligne Le Male / Ultra Male (Commons), même famille de flacon torse."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel Le Male / Ultra Male (Commons)."
   },
   {
     "id": "prada-paradoxe",
     "brand": "Prada Paradoxe",
     "name": "33 ml",
     "gender": "femme",
-    "priceDh": 130,
+    "priceDh": 140,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/960px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Photo produit Prada Paradoxe (Wikimedia Commons, licence CC)."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Prada Paradoxe (Wikimedia Commons, CC)."
   },
   {
     "id": "stronger-with-you",
@@ -150,8 +161,8 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Acqua_di_gio.jpg/960px-Acqua_di_gio.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel : Armani masculin (Acqua di Giò, Commons). Stronger With You : remplacer par photo officielle via Admin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel Armani masculin (Commons). SWY : photo officielle via Admin."
   },
   {
     "id": "boss-bottled",
@@ -160,9 +171,9 @@
     "gender": "homme",
     "priceDh": 130,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Boss_Bottled.jpg/960px-Boss_Bottled.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Photo Boss Bottled (Wikimedia Commons)."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Boss_Bottled.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Boss Bottled (Commons)."
   },
   {
     "id": "lacoste-1",
@@ -171,9 +182,9 @@
     "gender": "homme",
     "priceDh": 130,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Perfume_212_Carolina_Herrera.jpg/960px-Perfume_212_Carolina_Herrera.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Deux références Lacoste distinctes en stock. Visuel indicatif — ajouter photo Lacoste via Admin."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/9/92/Lacoste_Essential.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Lacoste homme — visuel Lacoste Essential (Commons). Réf. 1 : votre flacon peut différer."
   },
   {
     "id": "lacoste-2",
@@ -182,20 +193,20 @@
     "gender": "homme",
     "priceDh": 130,
     "volumeMl": 33,
-    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Acqua_di_gio.jpg/960px-Acqua_di_gio.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Deux références Lacoste distinctes en stock. Visuel indicatif — ajouter photo Lacoste via Admin."
+    "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/3/30/Davidoff_Cool_Water.jpg",
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Lacoste homme réf. 2 — visuel type flacon masculin frais (Commons). À remplacer par votre photo Lacoste."
   },
   {
     "id": "sauvage",
     "brand": "Sauvage",
     "name": "33 ml",
     "gender": "homme",
-    "priceDh": 130,
+    "priceDh": 140,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Eau_Sauvage_Christian_Dior.jpg/960px-Eau_Sauvage_Christian_Dior.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel : Eau Sauvage Dior (Commons), autre ligne que Sauvage EDT 2015 — mettre la photo Sauvage actuelle via Admin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel Dior (Commons). Sauvage : photo flacon actuel via Admin."
   },
   {
     "id": "burberry",
@@ -205,7 +216,7 @@
     "priceDh": 130,
     "volumeMl": 33,
     "imageOfficial": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Opium_pour_Homme.jpg/960px-Opium_pour_Homme.jpg",
-    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Perfume_Bottles.JPG/800px-Perfume_Bottles.JPG",
-    "notes": "Visuel indicatif (Commons). Burberry : remplacer par photo officielle via Admin."
+    "imageStock": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg/800px-2023_Woda_perfumowana_Prada_Paradoxe_%281%29.jpg",
+    "notes": "Visuel masculin type (Commons). Burberry : photo via Admin."
   }
 ]

@@ -3,7 +3,7 @@ import { siteConfig } from '../config/site'
 
 export function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50">
+    <footer className="border-t border-neutral-200 bg-neutral-50 print:hidden">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6 lg:grid-cols-3">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide">

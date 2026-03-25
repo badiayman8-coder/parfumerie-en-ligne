@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
-import { siteConfig } from '../config/site'
 import { ProductCard } from '../components/ProductCard'
+import { siteConfig } from '../config/site'
+import { catalogHasMixedUnitPrices } from '../lib/catalogPricing'
 import { useProducts } from '../hooks/useProducts'
 
 export function Home() {
   const { products } = useProducts()
   const featured = products.slice(0, 4)
+  const showUnitPrice = catalogHasMixedUnitPrices(products)
 
   return (
     <div className="space-y-12">
@@ -19,8 +21,9 @@ export function Home() {
         <p className="mt-4 max-w-2xl text-neutral-600">
           Flacons voyage <strong>33 ml</strong> (1,14 fl. oz.), emballage uniforme. Visuels
           type revendeur pour vous projeter ; photos réelles du stock sur chaque fiche
-          (onglet « Photo stock »). Le prix affiché <strong>inclut la livraison</strong>{' '}
-          pour une commande à l&apos;unité. Paiement uniquement en espèces à la livraison.
+          (onglet « Photo stock »). Tarifs <strong>standard et premium</strong> (livraison
+          incluse au flacon) ; les <strong>packs 2 ou 3</strong> s&apos;appliquent à tout le
+          catalogue. Paiement uniquement en espèces à la livraison.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
@@ -46,9 +49,10 @@ export function Home() {
           <div>
             <h2 className="text-xl font-semibold tracking-tight">Sélection</h2>
             <p className="mt-1 text-sm text-neutral-600">
-              {siteConfig.unitPriceDh} {siteConfig.currency} le flacon (livraison incluse) ·
-              packs {siteConfig.pack2TotalDh} / {siteConfig.pack3TotalDh} {siteConfig.currency}{' '}
-              pour 2 ou 3 parfums.
+              Flacons standard {siteConfig.standardUnitPriceDh} {siteConfig.currency},
+              premium {siteConfig.premiumUnitMinDh}–{siteConfig.premiumUnitMaxDh}{' '}
+              {siteConfig.currency} — packs {siteConfig.pack2TotalDh} /{' '}
+              {siteConfig.pack3TotalDh} {siteConfig.currency} (2 ou 3 flacons, tout parfum).
             </p>
           </div>
           <Link to="/collection" className="text-sm font-medium underline-offset-4 hover:underline">
@@ -57,7 +61,7 @@ export function Home() {
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <ProductCard key={p.id} product={p} showUnitPrice={showUnitPrice} />
           ))}
         </div>
       </section>

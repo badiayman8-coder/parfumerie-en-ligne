@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom'
-import type { Product } from '../types/product'
 import { siteConfig } from '../config/site'
+import { formatUnitDh, isPremiumUnitPrice } from '../lib/catalogPricing'
+import type { Product } from '../types/product'
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  showUnitPrice,
+}: {
+  product: Product
+  /** Si le catalogue mélange standard et premium, afficher le tarif sous chaque carte. */
+  showUnitPrice: boolean
+}) {
+  const premium = isPremiumUnitPrice(product)
   return (
     <article className="group flex flex-col">
       <Link
@@ -24,9 +33,16 @@ export function ProductCard({ product }: { product: Product }) {
           <h2 className="mt-1 line-clamp-2 text-sm font-semibold uppercase tracking-tight text-neutral-900">
             {product.brand} {product.name}
           </h2>
-          <p className="mt-2 text-sm font-medium">
-            {product.priceDh.toFixed(2)} {siteConfig.currency}
-          </p>
+          {showUnitPrice ? (
+            <p className="mt-2 text-sm font-medium tabular-nums text-neutral-900">
+              {formatUnitDh(product.priceDh)}
+              {premium ? (
+                <span className="ml-2 rounded-full bg-neutral-900 px-2 py-0.5 text-[10px] font-semibold uppercase text-white">
+                  Premium
+                </span>
+              ) : null}
+            </p>
+          ) : null}
           {product.promoBadge ? (
             <span className="mt-2 inline-block rounded-full bg-neutral-900 px-2 py-0.5 text-[10px] font-semibold uppercase text-white">
               {product.promoBadge}

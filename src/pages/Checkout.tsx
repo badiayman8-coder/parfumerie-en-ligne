@@ -1,15 +1,19 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useMemo, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { siteConfig } from '../config/site'
 import { QuantityStepper } from '../components/QuantityStepper'
 import { useCart } from '../hooks/useCart'
 import { useProducts } from '../hooks/useProducts'
+import { catalogHasMixedUnitPrices, formatUnitDh } from '../lib/catalogPricing'
+import { generateOrderReference } from '../lib/orderRef'
+import { saveConfirmedOrder } from '../lib/orderStorage'
 import { cartTotalUnits, computeTotals } from '../lib/pricing'
 import { whatsappOrderUrl } from '../lib/whatsapp'
 
 export function Checkout() {
+  const navigate = useNavigate()
   const { products } = useProducts()
-  const { lines, setQty, remove, packOffer } = useCart()
+  const { lines, setQty, remove, packOffer, clear } = useCart()
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [city, setCity] = useState('')
@@ -25,6 +29,11 @@ export function Checkout() {
     [lines, products, packOffer]
   )
 
+  const showLineUnitPrice = useMemo(
+    () => catalogHasMixedUnitPrices(products) && !totals.packApplied,
+    [products, totals.packApplied]
+  )
+
   const canSubmit =
     lines.length > 0 &&
     name.trim().length > 2 &&
@@ -32,15 +41,28 @@ export function Checkout() {
     city.trim().length > 1 &&
     address.trim().length > 4
 
-  const waUrl = canSubmit
-    ? whatsappOrderUrl(lines, products, packOffer, {
-        name: name.trim(),
-        phone: phone.trim(),
-        city: city.trim(),
-        address: address.trim(),
-        notes: notes.trim(),
-      })
-    : '#'
+  const finalizeOrder = useCallback(() => {
+    if (!canSubmit) return
+    const orderRef = generateOrderReference()
+    const customer = {
+      name: name.trim(),
+      phone: phone.trim(),
+      city: city.trim(),
+      address: address.trim(),
+      notes: notes.trim(),
+    }
+    saveConfirmedOrder({
+      orderRef,
+      createdAt: new Date().toISOString(),
+      lines: lines.map((l) => ({ ...l })),
+      packOffer,
+      customer,
+    })
+    const waUrl = whatsappOrderUrl(lines, products, packOffer, customer, orderRef)
+    window.open(waUrl, '_blank', 'noopener,noreferrer')
+    clear()
+    navigate(`/commande/confirmation?ref=${encodeURIComponent(orderRef)}`, { replace: true })
+  }, [canSubmit, name, phone, city, address, notes, lines, packOffer, products, clear, navigate])
 
   return (
     <div className="mx-auto grid max-w-4xl gap-10 lg:grid-cols-5">
@@ -82,10 +104,19 @@ export function Checkout() {
                       <p className="font-semibold">
                         {p.brand} {p.name}
                       </p>
-                      <p className="text-sm text-neutral-600">
-                        {p.priceDh.toFixed(2)} {siteConfig.currency} / unité (livraison
-                        incluse à l&apos;unité)
-                      </p>
+                      {showLineUnitPrice ? (
+                        <p className="text-sm text-neutral-600">
+                          {formatUnitDh(p.priceDh)} / unité (livraison incluse)
+                        </p>
+                      ) : totals.packApplied ? (
+                        <p className="text-sm text-neutral-600">
+                          Inclus dans l&apos;offre pack
+                        </p>
+                      ) : (
+                        <p className="text-sm text-neutral-600">
+                          Livraison incluse au tarif du flacon
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-center gap-4 sm:flex-col sm:items-end">
@@ -238,20 +269,20 @@ export function Checkout() {
             />
           </div>
 
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="button"
+            onClick={finalizeOrder}
+            disabled={!canSubmit}
             className={`flex w-full items-center justify-center rounded-full py-3 text-sm font-semibold text-white ${
               canSubmit ? 'bg-emerald-600 hover:bg-emerald-700' : 'cursor-not-allowed bg-neutral-300'
             }`}
-            aria-disabled={!canSubmit}
-            onClick={(e) => {
-              if (!canSubmit) e.preventDefault()
-            }}
           >
-            Envoyer la commande sur WhatsApp
-          </a>
+            Valider — WhatsApp + ticket de commande
+          </button>
+          <p className="text-center text-xs text-neutral-500">
+            Un <strong>numéro de commande</strong> est créé, le message WhatsApp s&apos;ouvre, puis
+            votre <strong>ticket</strong> (client & livreur).
+          </p>
           {!canSubmit && lines.length > 0 ? (
             <p className="text-center text-xs text-neutral-500">
               Remplissez tous les champs pour activer l&apos;envoi.

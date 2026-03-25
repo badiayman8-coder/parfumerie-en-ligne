@@ -9,6 +9,7 @@ import { Home } from './pages/Home'
 import { Legal } from './pages/Legal'
 import { NotFound } from './pages/NotFound'
 import { Packs } from './pages/Packs'
+import { OrderConfirmation } from './pages/OrderConfirmation'
 import { ProductDetail } from './pages/ProductDetail'
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="produit/:id" element={<ProductDetail />} />
               <Route path="packs" element={<Packs />} />
               <Route path="mentions" element={<Legal />} />
+              <Route path="commande/confirmation" element={<OrderConfirmation />} />
               <Route path="commande" element={<Checkout />} />
               <Route path="admin" element={<Admin />} />
               <Route path="home" element={<Navigate to="/" replace />} />
