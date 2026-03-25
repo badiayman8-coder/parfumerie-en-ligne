@@ -5,6 +5,24 @@ import type { CartLine } from './pricing'
 import type { PackOfferMode } from './pricing'
 import { computeTotals } from './pricing'
 
+/** Longueur max. du texte prérempli (URL WhatsApp — évite les liens cassés). */
+const MAX_PREFILL_CHARS = 1800
+
+/**
+ * Numéro uniquement en chiffres, format international sans + ni 0 initial.
+ * Ex. Maroc : +212 655 363 549 → 212655363549 ; 06… → 2126…
+ */
+export function normalizeWhatsAppPhoneDigits(raw: string): string {
+  let d = raw.replace(/\D/g, '')
+  if (d.length === 10 && d.startsWith('0') && d[1] === '6') {
+    d = `212${d.slice(1)}`
+  }
+  if (d.length === 9 && d.startsWith('6')) {
+    d = `212${d}`
+  }
+  return d
+}
+
 export function buildOrderMessage(
   lines: CartLine[],
   productList: Product[],
@@ -73,8 +91,18 @@ export function whatsappOrderUrl(
   customer: Parameters<typeof buildOrderMessage>[3],
   orderRef: string
 ): string {
-  const phone = siteConfig.whatsappPhoneE164.replace(/\D/g, '')
-  const text = buildOrderMessage(lines, productList, packOffer, customer, orderRef)
-  const q = encodeURIComponent(text)
-  return `https://wa.me/${phone}?text=${q}`
+  const phone = normalizeWhatsAppPhoneDigits(siteConfig.whatsappPhoneE164)
+  let text = buildOrderMessage(lines, productList, packOffer, customer, orderRef)
+  if (text.length > MAX_PREFILL_CHARS) {
+    text =
+      text.slice(0, MAX_PREFILL_CHARS - 80).trim() +
+      '\n\n[…] Message tronqué — détail sur le ticket de commande.'
+  }
+
+  const params = new URLSearchParams()
+  params.set('phone', phone)
+  params.set('text', text)
+
+  /** `api.whatsapp.com` est en général plus fiable que `wa.me` (mobile / Safari). */
+  return `https://api.whatsapp.com/send?${params.toString()}`
 }
