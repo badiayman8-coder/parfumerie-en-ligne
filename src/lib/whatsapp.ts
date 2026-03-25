@@ -1,8 +1,4 @@
-import {
-  ensureValidWhatsAppShopPhone,
-  getWhatsAppPhoneDigits,
-  siteConfig,
-} from '../config/site'
+import { WHATSAPP_PHONE_DIGITS, siteConfig } from '../config/site'
 import { formatUnitDh } from './catalogPricing'
 import type { Product } from '../types/product'
 import type { CartLine } from './pricing'
@@ -11,21 +7,6 @@ import { computeTotals } from './pricing'
 
 /** Longueur max. du texte prérempli (URL WhatsApp — évite les liens cassés). */
 const MAX_PREFILL_CHARS = 1800
-
-/**
- * Numéro uniquement en chiffres, format international sans + ni 0 initial.
- * Maroc : 06/07… national → 2126…/2127… ; 9 chiffres commençant par 6 ou 7 → préfixe 212.
- */
-export function normalizeWhatsAppPhoneDigits(raw: string): string {
-  let d = raw.replace(/\D/g, '')
-  if (d.length === 10 && d.startsWith('0') && (d[1] === '6' || d[1] === '7')) {
-    d = `212${d.slice(1)}`
-  }
-  if (d.length === 9 && (d.startsWith('6') || d.startsWith('7'))) {
-    d = `212${d}`
-  }
-  return d
-}
 
 export function buildOrderMessage(
   lines: CartLine[],
@@ -95,9 +76,7 @@ export function whatsappOrderUrl(
   customer: Parameters<typeof buildOrderMessage>[3],
   orderRef: string
 ): string {
-  const phone = ensureValidWhatsAppShopPhone(
-    normalizeWhatsAppPhoneDigits(getWhatsAppPhoneDigits())
-  )
+  const phone = WHATSAPP_PHONE_DIGITS
   let text = buildOrderMessage(lines, productList, packOffer, customer, orderRef)
   if (text.length > MAX_PREFILL_CHARS) {
     text =
