@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom'
-import { getWhatsAppPhoneDigits, siteConfig } from '../config/site'
+import {
+  ensureValidWhatsAppShopPhone,
+  formatWhatsAppShopDisplay,
+  getWhatsAppPhoneDigits,
+  siteConfig,
+} from '../config/site'
 import { normalizeWhatsAppPhoneDigits } from '../lib/whatsapp'
 
 export function Footer() {
@@ -19,13 +24,16 @@ export function Footer() {
         <div className="text-sm">
           <p className="font-medium text-neutral-900">Contact</p>
           <a
-            href={`https://api.whatsapp.com/send?phone=${normalizeWhatsAppPhoneDigits(getWhatsAppPhoneDigits())}`}
+            href={`https://api.whatsapp.com/send?phone=${ensureValidWhatsAppShopPhone(normalizeWhatsAppPhoneDigits(getWhatsAppPhoneDigits()))}`}
             target="_blank"
             rel="noreferrer"
             className="mt-2 inline-block font-medium text-emerald-800 underline-offset-4 hover:underline"
           >
             WhatsApp boutique
           </a>
+          <p className="mt-1 text-xs text-neutral-500 tabular-nums">
+            {formatWhatsAppShopDisplay()}
+          </p>
           <p className="mt-3 font-medium text-neutral-900">Suivez-nous</p>
           <a
             href={siteConfig.instagramUrl}

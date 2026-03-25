@@ -1,23 +1,32 @@
-/** Numéro WhatsApp boutique — +212 778 956 714 (chiffres seuls, sans +). */
-const DEFAULT_WHATSAPP_DIGITS = '212778956714'
+/**
+ * Numéro WhatsApp boutique — +212 778 956 714 (chiffres seuls, sans +).
+ * Seule source de vérité : plus de variable d’environnement (évite Vercel / ancien 212600…).
+ */
+export const WHATSAPP_SHOP_DIGITS = '212778956714'
 
-/** Ancien placeholder du template — ignoré même si présent dans `.env` / Vercel. */
+/** Placeholders invalides — jamais utilisés pour un lien (voir `ensureValidWhatsAppShopPhone`). */
 const INVALID_WHATSAPP_PLACEHOLDERS = new Set(['212600000000', '21260000000'])
 
-/**
- * Numéro utilisé pour les liens `api.whatsapp.com` / commandes.
- * Priorité : `VITE_WHATSAPP_PHONE` au build si valide, sinon défaut ci-dessus.
- * Sur Vercel : supprimez toute variable `VITE_WHATSAPP_PHONE` pointant encore vers 212600…
- */
 export function getWhatsAppPhoneDigits(): string {
-  const raw = import.meta.env.VITE_WHATSAPP_PHONE
-  if (typeof raw === 'string' && raw.trim()) {
-    const d = raw.replace(/\D/g, '')
-    if (d.length >= 11 && !INVALID_WHATSAPP_PLACEHOLDERS.has(d)) {
-      return d
-    }
+  return WHATSAPP_SHOP_DIGITS
+}
+
+/** Dernière ligne de défense si un ancien build ou bug passait encore le faux numéro. */
+export function ensureValidWhatsAppShopPhone(digits: string): string {
+  const d = digits.replace(/\D/g, '')
+  if (d.length < 11 || INVALID_WHATSAPP_PLACEHOLDERS.has(d)) {
+    return WHATSAPP_SHOP_DIGITS
   }
-  return DEFAULT_WHATSAPP_DIGITS
+  return d
+}
+
+/** Affichage lisible du numéro boutique (pied de page, vérif visuelle). */
+export function formatWhatsAppShopDisplay(): string {
+  const d = WHATSAPP_SHOP_DIGITS
+  if (d.length === 12 && d.startsWith('212')) {
+    return `+212 ${d.slice(3, 6)} ${d.slice(6, 9)} ${d.slice(9)}`
+  }
+  return `+${d}`
 }
 
 /** Configuration boutique — à adapter (WhatsApp, Instagram, prix). */
