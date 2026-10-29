@@ -8,12 +8,11 @@ import { catalogHasMixedUnitPrices, formatUnitDh } from '../lib/catalogPricing'
 import { generateOrderReference } from '../lib/orderRef'
 import { saveConfirmedOrder } from '../lib/orderStorage'
 import { cartTotalUnits, computeTotals } from '../lib/pricing'
-import { whatsappOrderUrl } from '../lib/whatsapp'
 
 export function Checkout() {
   const navigate = useNavigate()
   const { products } = useProducts()
-  const { lines, setQty, remove, packOffer, clear } = useCart()
+  const { lines, setQty, remove, packOffer } = useCart()
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [city, setCity] = useState('')
@@ -58,11 +57,8 @@ export function Checkout() {
       packOffer,
       customer,
     })
-    const waUrl = whatsappOrderUrl(lines, products, packOffer, customer, orderRef)
-    window.open(waUrl, '_blank', 'noopener,noreferrer')
-    clear()
     navigate(`/commande/confirmation?ref=${encodeURIComponent(orderRef)}`, { replace: true })
-  }, [canSubmit, name, phone, city, address, notes, lines, packOffer, products, clear, navigate])
+  }, [canSubmit, name, phone, city, address, notes, lines, packOffer, products, navigate])
 
   return (
     <div className="mx-auto grid max-w-4xl gap-10 lg:grid-cols-5">
@@ -277,11 +273,11 @@ export function Checkout() {
               canSubmit ? 'bg-emerald-600 hover:bg-emerald-700' : 'cursor-not-allowed bg-neutral-300'
             }`}
           >
-            Valider — WhatsApp + ticket de commande
+            Préparer ma demande
           </button>
           <p className="text-center text-xs text-neutral-500">
-            Un <strong>numéro de commande</strong> est créé, le message WhatsApp s&apos;ouvre, puis
-            votre <strong>ticket</strong> (client & livreur).
+            Un récapitulatif est créé dans ce navigateur. Sur la page suivante, vous devrez
+            ouvrir WhatsApp et envoyer le message pour transmettre votre demande.
           </p>
           {!canSubmit && lines.length > 0 ? (
             <p className="text-center text-xs text-neutral-500">

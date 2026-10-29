@@ -5,6 +5,7 @@ import { useProducts } from '../hooks/useProducts'
 import { catalogHasMixedUnitPrices, formatUnitDh } from '../lib/catalogPricing'
 import { getLastOrderRef, loadConfirmedOrder, type StoredOrderPayload } from '../lib/orderStorage'
 import { computeTotals } from '../lib/pricing'
+import { whatsappOrderUrl } from '../lib/whatsapp'
 
 function formatFrenchDate(iso: string) {
   try {
@@ -78,13 +79,20 @@ export function OrderConfirmation() {
   return (
     <div className="mx-auto max-w-lg space-y-8 pb-12 print:max-w-none print:pb-0">
       <div className="no-print text-center">
-        <p className="text-sm font-medium text-emerald-700">Commande enregistrée</p>
-        <h1 className="mt-2 text-2xl font-semibold tracking-tight">Votre ticket</h1>
+        <p className="text-sm font-medium text-emerald-700">Demande prête à envoyer</p>
+        <h1 className="mt-2 text-2xl font-semibold tracking-tight">Votre récapitulatif</h1>
         <p className="mt-2 text-sm text-neutral-600">
-          WhatsApp devrait s&apos;être ouvert avec le même numéro de commande. Conservez ce
-          ticket (client + livreur).
+          Aucune commande n&apos;a encore été transmise. Ouvrez WhatsApp, appuyez sur
+          « Envoyer », puis attendez la confirmation du vendeur avant toute livraison.
         </p>
       </div>
+
+      <a
+        href={whatsappOrderUrl(payload.lines, products, payload.packOffer, payload.customer, payload.orderRef)}
+        className="no-print block rounded-full bg-emerald-600 px-6 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-700"
+      >
+        Ouvrir WhatsApp et envoyer la demande
+      </a>
 
       <article
         className="ticket-print rounded-2xl border-2 border-dashed border-neutral-400 bg-white p-6 shadow-lg print:border-neutral-900 print:shadow-none"
@@ -165,16 +173,16 @@ export function OrderConfirmation() {
           <div className="rounded-xl bg-neutral-50 p-3 text-xs leading-relaxed text-neutral-800">
             <p className="font-semibold text-neutral-900">Pour le client</p>
             <p className="mt-1">
-              Conservez ce numéro <strong className="font-mono">{payload.orderRef}</strong> pour
-              toute question. Présentez-le au livreur si besoin.
+              Envoyez d&apos;abord la demande WhatsApp. Conservez ensuite la référence{' '}
+              <strong className="font-mono">{payload.orderRef}</strong> pour toute question.
             </p>
           </div>
           <div className="rounded-xl bg-amber-50 p-3 text-xs leading-relaxed text-amber-950">
             <p className="font-semibold">Pour le livreur</p>
             <p className="mt-1">
-              Vérifier la référence <strong className="font-mono">{payload.orderRef}</strong> et
-              le montant <strong>{totals.totalDh.toFixed(2)} {siteConfig.currency}</strong> avant
-              remise du colis.
+              Après confirmation du vendeur, vérifier la référence{' '}
+              <strong className="font-mono">{payload.orderRef}</strong> et le montant{' '}
+              <strong>{totals.totalDh.toFixed(2)} {siteConfig.currency}</strong> avant remise.
             </p>
           </div>
         </div>

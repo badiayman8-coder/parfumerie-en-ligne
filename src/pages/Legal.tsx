@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { siteConfig } from '../config/site'
+import { siteConfig, WHATSAPP_PHONE_DIGITS, whatsappPhoneDisplay } from '../config/site'
 
 export function Legal() {
   const cfg = siteConfig
@@ -10,9 +10,9 @@ export function Legal() {
           Infos, livraison & conditions
         </h1>
         <p className="mt-3">
-          Ce site présente une liquidation de stock de flacons au format 33 ml. Les visuels
-          type « revendeur » servent d&apos;illustration ; les photographies « stock »
-          sur chaque fiche reflètent l&apos;emballage réel expédié.
+          Ce site présente des flacons au format 33 ml. Les images sont des illustrations
+          génériques et ne montrent pas le stock réel. Demandez une photo du flacon proposé
+          et confirmez sa disponibilité avec le vendeur avant achat.
         </p>
       </div>
 
@@ -21,8 +21,9 @@ export function Legal() {
         <p className="mt-2">
           Aucun paiement en ligne n&apos;est proposé. Le règlement s&apos;effectue{' '}
           <strong>uniquement en espèces au moment de la livraison</strong>, contre
-          remise du colis. En validant une commande via le formulaire (WhatsApp), vous
-          acceptez ces conditions.
+          remise du colis. Le formulaire prépare un message WhatsApp : votre demande
+          n&apos;est transmise que lorsque vous envoyez ce message. Le vendeur confirme
+          ensuite la disponibilité et les modalités avant toute expédition.
         </p>
       </section>
 
@@ -59,16 +60,13 @@ export function Legal() {
       <section>
         <h2 className="text-base font-semibold text-neutral-900">Contact</h2>
         <p className="mt-2">
-          Commandes et questions : WhatsApp (numéro configuré dans le site) et Instagram{' '}
+          Commandes et questions :{' '}
           <a
-            href={cfg.instagramUrl}
-            target="_blank"
-            rel="noreferrer"
+            href={`https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE_DIGITS}`}
             className="font-medium underline underline-offset-2"
           >
-            @{cfg.instagramHandle}
-          </a>
-          . Email : {cfg.contactEmail} (à remplacer).
+            WhatsApp {whatsappPhoneDisplay()}
+          </a>.
         </p>
       </section>
 

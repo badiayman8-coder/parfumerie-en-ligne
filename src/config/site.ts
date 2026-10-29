@@ -33,11 +33,8 @@ export const siteConfig = {
   pack3TotalDh: 330,
   pack2Title: 'Pack 2 parfums',
   pack3Title: 'Pack 3 parfums',
-  instagramHandle: 'votre_compte_insta',
-  instagramUrl: 'https://instagram.com/votre_compte_insta',
   amana:
     'Les envois sont préparés pour expédition via le réseau Amana (point relais / livraison selon zone).',
-  contactEmail: 'contact@example.com',
   promoBanner:
     'Flacons standard à partir de 130 dh, premium 140–150 dh (livraison incluse). Packs 2 ou 3 : mêmes totaux pour tout le catalogue — paiement en espèces à la livraison.',
 } as const
