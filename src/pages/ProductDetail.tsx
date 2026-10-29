@@ -65,7 +65,7 @@ export function ProductDetail() {
         <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100">
           <img
             src={img}
-            alt={`${p.brand} ${p.name}`}
+            alt={`Illustration générique pour ${p.brand} ${p.name}`}
             className="aspect-square w-full object-cover"
             loading="eager"
           />

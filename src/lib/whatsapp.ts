@@ -40,10 +40,10 @@ export function buildOrderMessage(
     .join('\n')
 
   const parts = [
-    `Commande ${siteConfig.shopName}`,
+    `Demande de commande ${siteConfig.shopName}`,
     '',
-    `N° DE COMMANDE : ${orderRef}`,
-    '(À indiquer au livreur — même numéro sur votre ticket)',
+    `RÉFÉRENCE DE DEMANDE : ${orderRef}`,
+    '(Le vendeur confirmera la disponibilité avant expédition)',
     '',
     'CLIENT',
     `Nom : ${customer.name}`,
@@ -61,7 +61,7 @@ export function buildOrderMessage(
     packApplied ? '' : `Livraison : ${deliveryDh === 0 ? 'incluse au prix du flacon' : `${deliveryDh} ${siteConfig.currency}`}`,
     `TOTAL à payer en espèces à la livraison : ${totalDh} ${siteConfig.currency}`,
     '',
-    'LIVREUR — vérifier le N° de commande et le montant avant remise du colis.',
+    'Après confirmation, le livreur vérifiera la référence et le montant avant remise du colis.',
     '',
     'Paiement uniquement en espèces à la livraison.',
   ]

@@ -21,7 +21,7 @@ export function ProductCard({
         <div className="aspect-square overflow-hidden bg-neutral-100">
           <img
             src={product.imageOfficial}
-            alt={`${product.brand} ${product.name}`}
+            alt={`Illustration générique pour ${product.brand} ${product.name}`}
             className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
             loading="lazy"
           />

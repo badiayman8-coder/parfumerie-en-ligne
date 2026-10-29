@@ -28,15 +28,6 @@ export function Footer() {
           <p className="mt-1 text-xs text-neutral-500 tabular-nums">
             {whatsappPhoneDisplay()}
           </p>
-          <p className="mt-3 font-medium text-neutral-900">Suivez-nous</p>
-          <a
-            href={siteConfig.instagramUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block text-neutral-600 underline-offset-4 hover:underline"
-          >
-            Instagram @{siteConfig.instagramHandle}
-          </a>
           <p className="mt-3 text-neutral-500">
             Paiement en espèces à la livraison uniquement.
           </p>
@@ -45,10 +36,6 @@ export function Footer() {
       <div className="border-t border-neutral-200 py-4 text-center text-xs text-neutral-500">
         <Link to="/mentions" className="hover:underline">
           Mentions & conditions
-        </Link>
-        <span className="mx-2">·</span>
-        <Link to="/admin" className="hover:underline">
-          Admin photos
         </Link>
         <span className="mx-2">·</span>
         <span>Flacons 33 ml — sous réserve de disponibilité</span>

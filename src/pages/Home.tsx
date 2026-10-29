@@ -19,9 +19,9 @@ export function Home() {
           {siteConfig.shopTagline}
         </h1>
         <p className="mt-4 max-w-2xl text-neutral-600">
-          Flacons voyage <strong>33 ml</strong> (1,14 fl. oz.), emballage uniforme. Visuels
-          type revendeur pour vous projeter ; photos réelles du stock sur chaque fiche
-          (onglet « Photo stock »). Tarifs <strong>standard et premium</strong> (livraison
+          Flacons voyage <strong>33 ml</strong> (1,14 fl. oz.), emballage uniforme. Les
+          images sont des illustrations génériques. Demandez une photo du flacon proposé
+          et confirmez sa disponibilité par WhatsApp avant l&apos;achat. Tarifs <strong>standard et premium</strong> (livraison
           incluse au flacon) ; les <strong>packs 2 ou 3</strong> s&apos;appliquent à tout le
           catalogue. Paiement uniquement en espèces à la livraison.
         </p>
